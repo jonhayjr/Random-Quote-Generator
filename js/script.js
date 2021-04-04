@@ -45,7 +45,13 @@ source: "Woody Allen"
 /***
  * `getRandomQuote` function
 ***/
+const getRandomQuote = () => {
+  //Calculates random number based on array length
+  const randomNumber = Math.floor(Math.random() * quotes.length); 
 
+  //Returns random quote object
+  return quotes[randomNumber];
+}
 
 
 /***
