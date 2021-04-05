@@ -12,6 +12,7 @@ body {
   padding: 5px;
 }
 
+
 header {
   display: flex;
   flex-flow: row wrap;
@@ -115,9 +116,8 @@ h1 {
   font-style: normal;
 }
 
-.tags:before {
-  content: ", ";
-  font-style: normal;
+.tags {
+  text-align: right;
 }
 
 @media (min-width: 768px) {

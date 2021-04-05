@@ -15,43 +15,29 @@ const quotes = [
 quote: "Pain is temporary. It may last a minute, or an hour, or a day, or a year, but eventually it will subside and something else will take its place. If I quit, however, it lasts forever.",
 source: "Lance Armstrong",
 citation: "It's Not about the Bike: My Journey Back to Life",
-year: "2000",
-tags: ""
+year: "2000"
 },
 {
 quote: "Be yourself; everyone else is already taken.",
-source: "Oscar Wilde",
-citation: "",
-year: "",
-tags: ""
+source: "Oscar Wilde"
 },
 {
 quote: "You miss 100% of the shots you don’t take",
 source: "Wayne Gretzky",
-citation: "",
-year: "1991",
-tags: ""
+year: "1991"
 },
 {
 quote: "I’ve learned that people will forget what you said, people will forget what you did, but people will never forget how you made them feel.",
-source: "Maya Angelou",
-citation: "",
-year: "",
-tags: ""
+source: "Maya Angelou"
 },
 {
 quote: "Success is not final, failure is not fatal: it is the courage to continue that counts.",
 source: "Winston S. Churchill",
-citation: "",
-year: "",
 tags: "bravery, courage, failure, inspirational, success"
 },
 {
 quote: "Eighty percent of success is just showing up.",
-source: "Woody Allen",
-citation: "",
-year: "",
-tags: ""
+source: "Woody Allen"
 }
 ]
 
@@ -67,6 +53,19 @@ const getRandomQuote = () => {
   return quotes[randomNumber];
 }
 
+/***
+ * `getRandomColor function
+***/
+const getRandomColor = () => {
+  //Create 3 random numbers for rgb color values
+  const randomNumber1 = Math.floor(Math.random() * 256);
+  const randomNumber2 = Math.floor(Math.random() * 256);
+  const randomNumber3 = Math.floor(Math.random() * 256);
+
+  //Creates RGB color with 3 random numbers
+  const randomColor = `rgb(${randomNumber1}, ${randomNumber2}, ${randomNumber3})`;
+  return randomColor;
+}
 
 /***
  * `printQuote` function
@@ -74,6 +73,11 @@ const getRandomQuote = () => {
 const printQuote = () => {
   //Stores quote from getRandomQuote function
   const randomQuote = getRandomQuote();
+
+  //Stores random color from getRandomColor function
+  const randomColor = getRandomColor();
+  
+
 
   let HTML = `
   <p class="quote">${randomQuote.quote}</p>
@@ -90,19 +94,26 @@ const printQuote = () => {
     HTML += `<span class="year">${randomQuote.year}</span>`;
   }
 
-  //If object has tags property value, add HTML with value.
+  //If object has tags property value, add to new line.
   if (randomQuote.tags) {
-    HTML += `<span class="tags">Tags: ${randomQuote.tags}</span>`;
+    HTML += `</p><p class="tags">Tags: ${randomQuote.tags}</p>`;
+  } else {
+      //Add closing p tag
+    HTML += '</p>';
   }
 
-  //Add closing p tag
-  HTML += '</p>';
 
   //Grab element with id of quote-box
   const quoteBox = document.querySelector('#quote-box');
 
   //Update quoteBox HTML with HTML variable
   quoteBox.innerHTML = HTML;
+
+  //Grab body element and store in a variable
+  const body = document.querySelector('body');
+
+  //Set body's background color equal to random color
+  body.style.backgroundColor = randomColor;
 }
 
 
