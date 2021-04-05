@@ -38,6 +38,23 @@ tags: "bravery, courage, failure, inspirational, success"
 {
 quote: "Eighty percent of success is just showing up.",
 source: "Woody Allen"
+},
+{
+quote: "I have not failed. I've just found 10,000 ways that won't work.",
+source: "Thomas Edison"
+},
+{
+quote: "The two most important days in your life are the day you are born and the day you find out why.",
+source: "Mark Twain"
+},
+{
+quote: "The successful warrior is the average man, with laser-like focus.",
+source: "Bruce Lee"
+},
+{
+quote: "When everything seems to be going against you, remember that the airplane takes off against the wind, not with it.",
+source: "Henry Ford",
+tags: "against, airplane, everything, going, motivational, perseverance, positive, remember"
 }
 ]
 
@@ -116,6 +133,8 @@ const printQuote = () => {
   body.style.backgroundColor = randomColor;
 }
 
+//Execute printQuote function every 15 seconds
+window.setInterval(printQuote, 15000);
 
 /***
  * click event listener for the print quote button
