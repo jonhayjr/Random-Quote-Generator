@@ -117,7 +117,7 @@ h1 {
 }
 
 .tags {
-  text-align: right;
+  line-height: 1.2;
 }
 
 @media (min-width: 768px) {
@@ -167,5 +167,9 @@ h1 {
 
   .source {
     font-size: 1.25rem;
+  }
+
+  .tags {
+    text-align: right;
   }
 }
