@@ -62,9 +62,25 @@ tags: "against, airplane, everything, going, motivational, perseverance, positiv
 /***
  * `getRandomQuote` function
 ***/
+//Array to store quotes that have already been used
+let usedQuotes = [];
+
 const getRandomQuote = () => {
   //Calculates random number based on array length
-  const randomNumber = Math.floor(Math.random() * quotes.length); 
+  let randomNumber = Math.floor(Math.random() * quotes.length); 
+
+  //Checks to see if quote was already used.  If so, a new random quote is selected.
+  while (usedQuotes.indexOf(quotes[randomNumber].quote) >= 0 && usedQuotes.length !== quotes.length) {
+    randomNumber =  Math.floor(Math.random() * quotes.length);
+  }
+
+  //If all quotes have been looped through, usedQuotes array is reset
+  if (usedQuotes.length === quotes.length) {
+    usedQuotes = [];
+  }
+
+  //Push current quote to usedQuotes array
+  usedQuotes.push(quotes[randomNumber].quote);
 
   //Returns random quote object
   return quotes[randomNumber];
@@ -94,8 +110,6 @@ const printQuote = () => {
   //Stores random color from getRandomColor function
   const randomColor = getRandomColor();
   
-
-
   let HTML = `
   <p class="quote">${randomQuote.quote}</p>
   <p class="source">${randomQuote.source}
