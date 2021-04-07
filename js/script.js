@@ -58,20 +58,19 @@ tags: "against, airplane, everything, going, motivational, perseverance, positiv
 }
 ]
 
-
 /***
- * `getRandomQuote` function
+ * `getUniqueQuote function
 ***/
-//Array to store quotes that have already been used
 let usedQuotes = [];
 
-const getRandomQuote = () => {
-  //Calculates random number based on array length
-  let randomNumber = Math.floor(Math.random() * quotes.length); 
+const getUniqueQuote = (randNumber) => {
+
+  //Generates random number bases on callback function.
+  let randomNumber = randNumber(quotes.length);
 
   //Checks to see if quote was already used.  If so, a new random quote is selected.
   while (usedQuotes.indexOf(quotes[randomNumber].quote) >= 0 && usedQuotes.length !== quotes.length) {
-    randomNumber =  Math.floor(Math.random() * quotes.length);
+    randomNumber = randNumber(quotes.length);
   }
 
   //If all quotes have been looped through, usedQuotes array is reset
@@ -87,28 +86,23 @@ const getRandomQuote = () => {
 }
 
 /***
- * `getRandomColor function
+ * `getRandomNumber function
 ***/
-const getRandomColor = () => {
-  //Create 3 random numbers for rgb color values
-  const randomNumber1 = Math.floor(Math.random() * 256);
-  const randomNumber2 = Math.floor(Math.random() * 256);
-  const randomNumber3 = Math.floor(Math.random() * 256);
+const getRandomNumber = (max) => {
+  let randomNumber = Math.floor(Math.random() * max); 
 
-  //Creates RGB color with 3 random numbers
-  const randomColor = `rgb(${randomNumber1}, ${randomNumber2}, ${randomNumber3})`;
-  return randomColor;
+  return randomNumber;
 }
 
 /***
  * `printQuote` function
 ***/
 const printQuote = () => {
-  //Stores quote from getRandomQuote function
-  const randomQuote = getRandomQuote();
+  //Stores random quote and ensures that it hasn't been uses previously.
+  const randomQuote = getUniqueQuote(getRandomNumber);
 
   //Stores random color from getRandomColor function
-  const randomColor = getRandomColor();
+  const randomColor = `rgb(${getRandomNumber(256)}, ${getRandomNumber(256)}, ${getRandomNumber(256)})`;
   
   let HTML = `
   <p class="quote">${randomQuote.quote}</p>
